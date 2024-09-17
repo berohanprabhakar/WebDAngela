@@ -30,6 +30,8 @@ app.get("/new", (req, res) => {
 app.get("/edit/:id", async (req, res) => {
   try {
     const response = await axios.get(`${API_URL}/posts/${req.params.id}`);
+    // through this he is taking the existing data from db and showing in edit page
+    
     console.log(response.data);
     res.render("modify.ejs", {
       heading: "Edit Post",
@@ -44,6 +46,7 @@ app.get("/edit/:id", async (req, res) => {
 // searching post by id
 app.post("/search", async (req,res) =>{
   try {
+    // i need the id from the search bar 
     const response = await axios.get(`${API_URL}/posts/${req.body.id}`);
     res.render("index.ejs",{
       posts : response.data
